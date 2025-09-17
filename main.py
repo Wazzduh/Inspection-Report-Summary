@@ -41,11 +41,17 @@ for line in new_text:
     elif x == "yellow":
         yellow.append(line)
 
+print("Things in red")
+for line in red:
+    print(line)
 
+print("Things in yellow")
+for line in yellow:
+    print(line)
 
 # Print the extracted text (or process it further)
 for text in final_summary:
     #print(text)
     pass
 
-summarize.summarized(red, yellow)
+#summarize.summarized(red, yellow)
