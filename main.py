@@ -1,13 +1,20 @@
 #main program code goes here
+from pypdf import PdfReader
 import functions_page
+import sys
 
 # Replace PDF name with desired document
 print("Which RO would you like to summarize?")
 inp = input(">> ")
 file = inp + ".pdf"
+try:
+    reader = PdfReader(file)
+except:
+    print("File does not exist")
+    sys.exit()
 
 
-functions_page.get_file(file)
+red, yellow = functions_page.get_file(reader)
 final_summary = functions_page.summarized(red, yellow)
 functions_page.get_brakes()
 functions_page.get_tires()

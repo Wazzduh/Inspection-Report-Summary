@@ -7,7 +7,6 @@ pdf_text = []
 new_text = []
 red = []
 yellow = []
-x = ""
 characters = ["-", "(", ")", "|"]
 brake_measurements = ["1mm", "2mm", "3mm", "4mm", "5mm", "6mm", "7mm", "8mm"]
 tire_measurements = ["1/32", "2/32", "3/32", "4/32", "5/32", "6/32", "7/32", "8/32", "9/32", "10/32"]
@@ -19,12 +18,8 @@ headers = ["Engine Oil Level & Condition/Leaks", "Cabin Air Filter", "Engine Air
             "Exhaust System (Leaks, Damage,", "Transmission / Linkages / Clutch (if", "Engine / Transmission Mounts", "Front/Rear Tires", "Full Inspection Results"]
 
 
-def get_file(inp):
-    try:
-        reader = PdfReader(file)
-    except:
-        print("File does not exist")
-        sys.exit()
+def get_file(reader):
+    x = ""
     number_of_pages = len(reader.pages)
 
     for page_num in range(number_of_pages):
@@ -51,6 +46,7 @@ def get_file(inp):
             red.append(line)
         elif x == "yellow":
             yellow.append(line)
+    return red, yellow
     
 
 def summarized(red, yellow):
